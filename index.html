@@ -18,12 +18,14 @@
       src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
     ></script>
 
-    <!-- Printing Hello World to the Browser using JS -->
-    <!-- <script>
-      const heading = document.createElement('h1');
-      heading.innerHTML = 'Hello World from JS';
-      const root = document.getElementById('root');
-      root.appendChild(heading);
-    </script> -->
+    <script>
+      const heading = React.createElement('h1', {}, 'Hello World');
+
+      const rootDiv = document.querySelector('#root');
+
+      const root = ReactDOM.createRoot(rootDiv);
+
+      root.render(heading);
+    </script>
   </body>
 </html>
