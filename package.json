@@ -1,0 +1,19 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "Code for the course namaste-react",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdaz78/namaste-react.git"
+  },
+  "author": "Md Abu Zafar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mdaz78/namaste-react/issues"
+  },
+  "homepage": "https://github.com/mdaz78/namaste-react#readme"
+}
