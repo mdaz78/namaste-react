@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mdaz78/namaste-react/issues"
   },
-  "homepage": "https://github.com/mdaz78/namaste-react#readme"
+  "homepage": "https://github.com/mdaz78/namaste-react#readme",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
 }
