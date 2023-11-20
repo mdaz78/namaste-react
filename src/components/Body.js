@@ -31,7 +31,7 @@ export default function Body() {
   return (
     <div className=''>
       <div className='bg-[url("https://img.cdn4dd.com/cdn-cgi/image/fit=cover,format=auto,quality=60/https://cdn.doordash.com/managed/consumer/seo/home/hero_v3/hero_desktop.png")] h-[300px] w-full bg-cover'>
-        <div className='hero-body'>
+        <div className='h-full hero-body'>
           <Search />
         </div>
       </div>

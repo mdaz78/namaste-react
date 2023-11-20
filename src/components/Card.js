@@ -8,7 +8,7 @@ const Card = ({ cardDetails }) => {
 
   return (
     <div className='h-[300px] p-2 w-[250px] relative'>
-      <div className='h-full p-2 border border-gray-200 rounded-md cursor-pointer hover:rounded-none hover:bg-gray-50'>
+      <div className='h-full p-2 border border-gray-200 rounded-md cursor-pointer hover:border-[#f54322] hover:bg-red-50 hover:bg-opacity-50'>
         <div
           className='h-[150px] rounded-md mb-2 bg-cover'
           style={{ backgroundImage: `url(${bgImageUrl})` }}
