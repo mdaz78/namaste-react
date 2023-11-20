@@ -25,7 +25,7 @@ export default function Search() {
             onChange={(e) => setSearchText(e.target.value)}
           />
           <div
-            className='absolute text-3xl text-[#f54322] right-1'
+            className='absolute text-3xl text-theme-red right-1'
             onClick={() => {
               initiateSearch();
             }}

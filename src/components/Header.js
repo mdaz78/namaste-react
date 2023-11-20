@@ -3,7 +3,7 @@ import MenuItem from './MenuItem';
 
 export default function Header() {
   return (
-    <div className='bg-[#f54322] p-10 pb-0 text-white'>
+    <div className='p-10 pb-0 text-white bg-theme-red'>
       <div className='flex items-center justify-between pb-5 '>
         <div className='logo-container'>
           <h1 className='text-5xl font-extrabold'>Namaste Food</h1>
