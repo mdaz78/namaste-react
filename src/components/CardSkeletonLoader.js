@@ -2,7 +2,7 @@ import React from 'react';
 
 const CardSkeletonLoader = () => {
   return (
-    <div className='w-full h-full'>
+    <div className='w-[250px] h-full p-2'>
       <div className='p-2.5 border border-gray-200 rounded-md'>
         <div className='animate-pulse'>
           {/* Background Image */}

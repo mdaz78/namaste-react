@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/mdaz78/namaste-react#readme",
   "devDependencies": {
+    "axios": "^1.6.2",
+    "buffer": "^6.0.3",
     "parcel": "^2.9.3",
     "postcss": "^8.4.31",
     "process": "^0.11.10",
