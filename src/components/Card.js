@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaRegStar } from 'react-icons/fa';
+import { FaRegStar, FaMotorcycle } from 'react-icons/fa';
 
 import { CLOUDINARY_URL } from '../utils/constants';
 
@@ -8,7 +8,7 @@ const Card = ({ cardDetails }) => {
 
   return (
     <div className='h-[300px] p-2 w-[250px] relative'>
-      <div className='h-full p-2 border border-gray-200 rounded-md'>
+      <div className='h-full p-2 border border-gray-200 rounded-md cursor-pointer hover:rounded-none hover:bg-gray-50'>
         <div
           className='h-[150px] rounded-md mb-2 bg-cover'
           style={{ backgroundImage: `url(${bgImageUrl})` }}
@@ -31,9 +31,15 @@ const Card = ({ cardDetails }) => {
           {cardDetails.cuisines.join(', ')}
         </p>
 
-        <p className='text-xs font-medium'>{cardDetails.eta}</p>
         <div className='py-0.5 px-1 text-[10px] font-medium border w-fit rounded-md border-gray-200 bg-gray-100 absolute top-6 left-6'>
           {cardDetails.costForTwo}
+        </div>
+
+        <div className='flex items-center py-0.5 px-1 space-x-1 text-xs font-medium border w-fit rounded-md border-gray-200 absolute bottom-6 left-4'>
+          <div className='text-sm'>
+            <FaMotorcycle />
+          </div>
+          <p>{cardDetails.eta}</p>
         </div>
       </div>
     </div>
