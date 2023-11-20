@@ -2,8 +2,6 @@ export const restaurantDataCleanup = (restaurantData) => {
   return restaurantData.map((resData) => {
     const info = resData?.info;
 
-    console.log(info);
-
     if (!info) {
       return {};
     }
