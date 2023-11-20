@@ -11,7 +11,6 @@ const CardSkeletonLoader = () => {
           {/* Title and Rating */}
           <div className='mb-2'>
             <div className='w-full h-4 mb-2 bg-gray-100 rounded'></div>
-            <div className='w-4/5 h-4 mb-2 bg-gray-100 rounded'></div>
           </div>
 
           {/* Cuisine */}
@@ -20,10 +19,9 @@ const CardSkeletonLoader = () => {
             <div className='w-full h-4 mb-2 bg-gray-100 rounded'></div>
           </div>
 
-          {/* Cost for two and ETA */}
-          <div className='flex mt-4 space-x-2'>
-            <div className='w-1/2 h-6 mb-2 bg-gray-100 rounded'></div>
-            <div className='w-1/2 h-6 mb-2 bg-gray-100 rounded'></div>
+          {/* ETA */}
+          <div className='mt-4'>
+            <div className='w-3/4 h-4 bg-gray-100 rounded'></div>
           </div>
         </div>
       </div>
