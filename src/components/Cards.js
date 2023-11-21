@@ -2,7 +2,7 @@ import React from 'react';
 import CardSkeletonLoader from './CardSkeletonLoader';
 import Card from './Card';
 
-const Cards = ({ restaurants, requestFailed }) => {
+const Cards = ({ restaurants, filteredRestaurants, requestFailed }) => {
   if (!requestFailed && restaurants.length === 0) {
     return (
       <div className='flex flex-wrap w-full'>
@@ -13,9 +13,17 @@ const Cards = ({ restaurants, requestFailed }) => {
     );
   }
 
+  if (filteredRestaurants.length === 0) {
+    return (
+      <div className='text-lg font-bold text-center text-theme-red'>
+        OOPS your search returned no result!
+      </div>
+    );
+  }
+
   return (
     <div className='flex flex-wrap w-full'>
-      {restaurants.map((resData) => {
+      {filteredRestaurants.map((resData) => {
         return <Card key={resData.id} cardDetails={resData} />;
       })}
     </div>
