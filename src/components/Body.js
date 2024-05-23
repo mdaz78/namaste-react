@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import Search from './Search';
-import Cards from './Cards';
-import axios from 'axios';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import Cards from "./Cards";
+import Search from "./Search";
 
-import { API_URL } from '../utils/constants';
-import { restaurantDataCleanup } from '../utils';
+import { restaurantDataCleanup } from "../utils";
+import { API_URL } from "../utils/constants";
 
 export default function Body() {
   const [restaurants, setRestaurants] = useState([]);
@@ -15,13 +15,16 @@ export default function Body() {
     const fetchRestaurants = async () => {
       const data = await axios.get(API_URL);
       const restaurantData =
-        data?.data?.data?.cards[5]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
+
+      console.log({ data: data?.data?.data?.cards, restaurantData });
 
       const _restaurants = restaurantDataCleanup(restaurantData);
       setRestaurants(_restaurants);
       setFilteredRestaurants(_restaurants);
     };
+
     try {
       fetchRestaurants();
     } catch (err) {
@@ -43,9 +46,9 @@ export default function Body() {
   };
 
   return (
-    <div className=''>
+    <div className="">
       <div className='bg-[url("https://img.cdn4dd.com/cdn-cgi/image/fit=cover,format=auto,quality=60/https://cdn.doordash.com/managed/consumer/seo/home/hero_v3/hero_desktop.png")] h-[300px] w-full bg-cover'>
-        <div className='h-full hero-body'>
+        <div className="h-full hero-body">
           <Search
             restaurants={restaurants}
             filteredRestaurants={filteredRestaurants}
@@ -54,7 +57,7 @@ export default function Body() {
           />
         </div>
       </div>
-      <div className='w-full p-10'>
+      <div className="w-full p-10">
         <Cards
           filteredRestaurants={filteredRestaurants}
           restaurants={restaurants}
