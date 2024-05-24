@@ -6,7 +6,7 @@ import Search from "./Search";
 import { restaurantDataCleanup } from "../utils";
 import { API_URL } from "../utils/constants";
 
-export default function Body() {
+export default function HomeComponent() {
   const [restaurants, setRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [requestFailed, setIsRequestFailed] = useState(false);
