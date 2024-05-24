@@ -15,7 +15,6 @@ export default function Header() {
           <MenuItem>
             <Link to={"/about"}>About Us</Link>
           </MenuItem>
-          <MenuItem>Search</MenuItem>
           <MenuItem>Blog</MenuItem>
           <MenuItem>Contact</MenuItem>
         </div>
