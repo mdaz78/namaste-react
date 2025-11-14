@@ -1,44 +1,81 @@
 import React from "react";
-import { FaMotorcycle, FaRegStar } from "react-icons/fa";
+import { FaRegStar } from "react-icons/fa";
+import { MdDeliveryDining } from "react-icons/md";
 
 import { CLOUDINARY_URL } from "../utils/constants";
+import VegNonVegIndicator from "./VegNonVegIndicator";
 
-const Card = ({ imageId, rating, name, cuisines, costForTwo, eta }) => {
+const Card = ({
+  imageId,
+  rating,
+  name,
+  cuisines,
+  costForTwo,
+  eta,
+  veg,
+  totalRatingsString
+}) => {
   // Check if imageId is a full URL or a Cloudinary ID
-  const bgImageUrl = imageId?.startsWith('http')
+  const imageUrl = imageId?.startsWith('http')
     ? imageId
     : `${CLOUDINARY_URL}${imageId}`;
 
+  // Mock delivery fee (you can make this dynamic based on your data)
+  const deliveryFee = "Free delivery";
+
   return (
-    <div className="h-[300px] p-2 w-[250px] relative">
-      <div className="h-full p-2 border border-gray-200 rounded-md cursor-pointer hover:border-theme-red hover:bg-red-50 hover:bg-opacity-50">
-        <div
-          className="h-[150px] rounded-md mb-2 bg-cover"
-          style={{ backgroundImage: `url(${bgImageUrl})` }}
-        ></div>
-        <div className="absolute top-6 right-6">
-          <div className="flex items-center px-1 py-0.5 space-x-1 text-xs  w-fit rounded-md bg-green-700 text-white">
-            <div className="pt-[1px]">
+    <div className="bg-white rounded-xl overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-xl border border-gray-100">
+      {/* Image Section */}
+      <div className="relative h-48 w-full overflow-hidden">
+        <img
+          src={imageUrl}
+          alt={name}
+          className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
+        />
+      </div>
+
+      {/* Content Section */}
+      <div className="p-4 space-y-3">
+        {/* Restaurant Name */}
+        <h2 className="text-lg font-bold text-doordash-dark truncate">
+          {name}
+        </h2>
+
+        {/* Cuisines */}
+        <p className="text-sm text-doordash-gray truncate">
+          {cuisines.join(", ")}
+        </p>
+
+        {/* Rating and Veg Indicator */}
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-1">
+            <FaRegStar className="text-yellow-500 text-sm" />
+            <span className="text-sm font-semibold text-doordash-dark">
               {Number.isInteger(rating) ? `${rating}.0` : rating}
-            </div>
-            <div className="">
-              <FaRegStar />
-            </div>
+            </span>
+            {totalRatingsString && (
+              <span className="text-xs text-doordash-gray">
+                ({totalRatingsString})
+              </span>
+            )}
           </div>
+          <VegNonVegIndicator isVeg={veg} />
         </div>
 
-        <h2 className="pb-0.5 text-sm font-semibold">{name}</h2>
-        <p className="pb-2 text-xs font-medium">{cuisines.join(", ")}</p>
+        {/* Delivery Info */}
+        <div className="flex items-center justify-between pt-2 border-t border-gray-100">
+          <div className="flex items-center gap-1 text-sm text-doordash-gray">
+            <MdDeliveryDining className="text-lg" />
+            <span>{eta} mins</span>
+          </div>
+          <span className="text-xs font-medium text-green-600">
+            {deliveryFee}
+          </span>
+        </div>
 
-        <div className="py-0.5 px-1 text-[10px] font-medium border w-fit rounded-md border-gray-200 bg-gray-100 absolute top-6 left-6">
+        {/* Cost for Two */}
+        <div className="text-sm font-medium text-doordash-dark">
           {costForTwo}
-        </div>
-
-        <div className="flex items-center py-0.5 px-1 space-x-1 text-xs font-medium border w-fit rounded-md border-gray-200 absolute bottom-6 left-4">
-          <div className="text-sm">
-            <FaMotorcycle />
-          </div>
-          <p>{eta}</p>
         </div>
       </div>
     </div>

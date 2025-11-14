@@ -5,7 +5,13 @@ module.exports = {
     extend: {
       colors: {
         'theme-red': {
-          DEFAULT: '#f54322',
+          DEFAULT: '#FF3008',
+        },
+        'doordash': {
+          red: '#FF3008',
+          dark: '#191919',
+          gray: '#696969',
+          'light-gray': '#F7F7F7',
         },
       },
     },

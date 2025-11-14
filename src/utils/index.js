@@ -14,6 +14,8 @@ export const restaurantDataCleanup = (restaurantData) => {
       cuisines: info.cuisines,
       rating: info.avgRating,
       eta: info.sla?.slaString,
+      veg: info.veg,
+      totalRatingsString: info.totalRatingsString,
     };
   });
 };

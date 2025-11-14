@@ -1,10 +1,10 @@
 # Namaste React - Food Delivery App
 
-A modern, responsive food delivery application built with React as part of the [Namaste React](https://namastedev.com/learn/namaste-react) course by NamasteDev.
+A modern, responsive food delivery application with a **DoorDash-inspired design system**, built with React as part of the [Namaste React](https://namastedev.com/learn/namaste-react) course by NamasteDev.
 
 ## About This Project
 
-This project is a hands-on implementation of core React concepts and modern web development practices learned through the Namaste React course. It simulates a food delivery platform similar to Swiggy, featuring restaurant listings, real-time search, and a clean, user-friendly interface.
+This project is a hands-on implementation of core React concepts and modern web development practices learned through the Namaste React course. It features a **professional, DoorDash-inspired UI/UX** with a clean white background, strategic use of vibrant red accents (#FF3008), and modern design patterns including sticky navigation, shadow elevations, and responsive grid layouts.
 
 ## Tech Stack
 
@@ -29,19 +29,52 @@ This project is a hands-on implementation of core React concepts and modern web 
 
 ### Core Features
 - **Restaurant Listings** - Browse through a curated list of restaurants
-- **Real-time Search** - Search restaurants by name with instant results
-- **Responsive Design** - Fully responsive UI that works on all devices
-- **Skeleton Loading** - Smooth loading states for better UX
+- **Header Search** - Global search functionality in sticky header
+- **Responsive Design** - Fully responsive UI that works on all devices (mobile → tablet → desktop → xl)
+- **Skeleton Loading** - Smooth loading states matching card design
 - **Route-based Navigation** - Clean URL routing with React Router
 - **Mock API Integration** - Local JSON server for development
 
+### DoorDash-Inspired Design System
+
+#### Color Palette
+- **DoorDash Red**: `#FF3008` - Primary brand color for CTAs and accents
+- **Dark Text**: `#191919` - Main text and headings
+- **Gray**: `#696969` - Secondary text and metadata
+- **Light Gray**: `#F7F7F7` - Backgrounds and subtle elements
+
+#### Modern Header Design
+- **Sticky Navigation** - Header stays visible on scroll with shadow elevation
+- **White Background** - Clean, professional appearance with red accents
+- **Search Bar** - Centered, prominent search with icon and rounded design
+- **Shopping Cart** - Cart icon with item count badge
+- **Authentication** - Sign In and Sign Up buttons with hover effects
+- **Mobile Menu** - Responsive hamburger menu for smaller screens
+
+#### Hero Section
+- **Compelling CTAs** - "Order Now" and "Explore Restaurants" buttons
+- **Value Proposition** - Clear messaging: "Your favorite foods, delivered fast"
+- **Background Overlay** - Dark gradient for text readability
+- **450px Height** - Tall, impactful hero section
+
+#### Restaurant Cards
+- **Clean Layout** - Non-overlapping information, structured content
+- **Image Hover** - Subtle zoom effect on card hover
+- **Shadow Elevation** - Cards lift with shadow on hover
+- **Rounded Corners** - Modern rounded-xl design
+- **Rating Display** - Star rating with total count (e.g., "4.3 (10K+ ratings)")
+- **Veg/Non-Veg Indicator** - Color-coded icons (green/red)
+- **Delivery Info** - Delivery time and fee information
+- **Responsive Grid** - 1-2-3-4 column layout across breakpoints
+
 ### UI/UX Highlights
-- Clean, modern interface inspired by food delivery platforms
-- Hover effects and smooth transitions
-- Rating badges and delivery time indicators
-- Cost and cuisine information at a glance
-- Hero section with search functionality
-- Error handling with custom error pages
+- Clean, minimalist design with generous white space
+- Strategic use of DoorDash red for calls-to-action
+- Smooth transitions and hover effects throughout
+- Professional typography hierarchy
+- Mobile-first responsive approach
+- Accessibility-focused color contrasts
+- Skeleton loaders matching final design
 
 ## Project Structure
 
@@ -49,29 +82,33 @@ This project is a hands-on implementation of core React concepts and modern web 
 namaste-react/
 ├── src/
 │   ├── components/        # Reusable React components
-│   │   ├── Card.js       # Restaurant card component
-│   │   ├── Cards.js      # Restaurant cards container
-│   │   ├── CardSkeletonLoader.js  # Loading skeleton
-│   │   ├── Header.js     # Navigation header
-│   │   ├── HomeComponent.js       # Main home component
+│   │   ├── Card.js       # Restaurant card component (DoorDash-styled)
+│   │   ├── Cards.js      # Restaurant cards grid container
+│   │   ├── CardSkeletonLoader.js  # Loading skeleton matching card design
+│   │   ├── Header.js     # Sticky navigation header with search
+│   │   ├── SearchBar.js  # Search input with icon
+│   │   ├── CartIcon.js   # Shopping cart with item badge
+│   │   ├── AuthButtons.js # Sign In / Sign Up buttons
+│   │   ├── VegNonVegIndicator.js # Veg/Non-veg icon component
+│   │   ├── HomeComponent.js       # Main home component with hero
 │   │   ├── Search.js     # Search functionality
-│   │   └── MenuItem.js   # Menu item component
+│   │   └── MenuItem.js   # Navigation menu item with hover effects
 │   ├── pages/            # Page components
 │   │   ├── Home.js       # Home page
 │   │   ├── About.js      # About page
 │   │   └── Error.js      # Error page
 │   ├── utils/            # Utility functions and constants
-│   │   ├── index.js      # Helper functions
+│   │   ├── index.js      # Helper functions (restaurantDataCleanup)
 │   │   └── constants.js  # API URLs and constants
 │   ├── data/             # Static data and assets
 │   ├── App.js            # Root component
 │   ├── router.js         # Route configuration
 │   ├── index.js          # Application entry point
 │   └── index.css         # Global styles
-├── db.json               # JSON Server database
-├── index.html            # HTML template
+├── db.json               # JSON Server database (restaurant data)
+├── index.html            # HTML template with meta tags
 ├── vite.config.js        # Vite configuration
-├── tailwind.config.js    # Tailwind CSS configuration
+├── tailwind.config.js    # Tailwind CSS + DoorDash color palette
 ├── postcss.config.js     # PostCSS configuration
 └── package.json          # Project dependencies
 ```
@@ -166,11 +203,20 @@ Through building this project, I've gained practical experience in:
 - **Loading States** - Skeleton loaders for better UX
 - **Search Functionality** - Real-time filtering and search
 
+### Design System Development
+- **Design Tokens** - Creating a consistent color palette and spacing system
+- **Component Design** - DoorDash-inspired modern UI patterns
+- **Responsive Design** - Mobile-first approach with breakpoint-based layouts
+- **Typography System** - Establishing visual hierarchy with font scales
+- **Micro-interactions** - Hover effects, transitions, and animations
+- **Design Consistency** - Maintaining unified design language across components
+
 ### Styling & UI
-- **Tailwind CSS** - Utility-first CSS approach
-- **Responsive Design** - Mobile-first responsive layouts
-- **CSS-in-JS** - Dynamic styling with inline styles
-- **Component Styling** - Modular and maintainable styles
+- **Tailwind CSS** - Utility-first CSS approach with custom configuration
+- **Responsive Grids** - CSS Grid for adaptive layouts (1-2-3-4 columns)
+- **Shadow Elevations** - Creating depth with box-shadow
+- **Color Theory** - Strategic use of accent colors for CTAs
+- **Accessibility** - WCAG-compliant color contrasts
 
 ### Build Tools & DevOps
 - **Vite** - Fast, modern build tooling
@@ -178,38 +224,101 @@ Through building this project, I've gained practical experience in:
 - **JSON Server** - Mocking REST APIs for development
 - **Git** - Version control and collaboration
 
+## Design System Architecture
+
+### Component Design Principles
+- **Modularity** - Each component serves a single, well-defined purpose
+- **Reusability** - Components designed for use across multiple contexts
+- **Consistency** - Unified design language across all UI elements
+- **Accessibility** - WCAG-compliant color contrasts and semantic HTML
+
+### Responsive Breakpoints
+```
+mobile:     < 640px  (1 column grid)
+sm:         640px    (2 column grid)
+md:         768px    (2 column grid)
+lg:         1024px   (3 column grid, full header)
+xl:         1280px   (4 column grid)
+```
+
+### Typography Scale
+- **Hero Heading**: text-5xl/text-6xl (48px/60px) - Bold
+- **Restaurant Name**: text-lg (18px) - Bold
+- **Section Heading**: text-2xl (24px) - Bold
+- **Body Text**: text-sm (14px) - Regular
+- **Metadata**: text-xs (12px) - Medium
+
+### Spacing System
+- **Cards Gap**: gap-6 (1.5rem)
+- **Container Padding**: px-4/sm:px-6/lg:px-8
+- **Card Padding**: p-4 (1rem)
+- **Button Padding**: px-6/px-8 py-2/py-4
+
 ## Development Highlights
 
-### Component Reusability
-The project demonstrates strong component composition with reusable components like `Card`, `Search`, and `CardSkeletonLoader` that can be easily extended and maintained.
+### DoorDash-Inspired UI/UX
+The application features a **professional design system** inspired by DoorDash's "Prism" design language, emphasizing:
+- Clean white backgrounds with strategic red accents
+- Generous white space for visual clarity
+- Shadow elevations for depth perception
+- Smooth transitions and micro-interactions
+- Mobile-first responsive design
+
+### Component Architecture
+Strong component composition with **8 new UI components** added for the DoorDash redesign:
+- `SearchBar` - Rounded search input with icon
+- `CartIcon` - Interactive cart with badge counter
+- `AuthButtons` - CTA buttons for authentication
+- `VegNonVegIndicator` - Visual food type indicators
 
 ### Performance Optimization
-- Lazy loading for better initial load times
 - Efficient re-renders with proper state management
-- Image optimization with appropriate loading strategies
+- Responsive images with hover effects
+- CSS transitions instead of JavaScript animations
+- Grid layout for better rendering performance
 
 ### Code Quality
 - Clean, readable code following React best practices
+- Consistent design tokens via Tailwind config
 - Proper component organization and file structure
-- Consistent naming conventions
-- DRY (Don't Repeat Yourself) principles
+- Semantic HTML and accessible markup
 
 ## Future Enhancements
 
-- [ ] Add restaurant detail pages
-- [ ] Implement shopping cart functionality
-- [ ] Add user authentication
+### Functionality
+- [ ] Implement functional shopping cart with add/remove items
+- [ ] Add user authentication and profile management
 - [ ] Integrate payment gateway
-- [ ] Add order tracking
-- [ ] Implement filters (cuisine, rating, price range)
+- [ ] Add order tracking and history
+- [ ] Implement restaurant detail pages with menu
 - [ ] Add favorites/wishlist feature
-- [ ] Implement dark mode
-- [ ] Add unit and integration tests
+- [ ] Real-time order status updates
+
+### Design & UX
+- [ ] Implement filters (cuisine, rating, price range, delivery fee)
+- [ ] Add dark mode with theme toggle
+- [ ] Animated page transitions
+- [ ] Toast notifications for user actions
+- [ ] Loading progress bar
+- [ ] Image lazy loading and optimization
+
+### Technical
+- [ ] Add unit and integration tests (Jest, React Testing Library)
+- [ ] Implement Redux or Context API for state management
 - [ ] Progressive Web App (PWA) features
+- [ ] SEO optimization and meta tags
+- [ ] Performance monitoring and analytics
 
 ## Screenshots
 
-> Add screenshots of your application here once deployed
+> **Note**: The application features a modern DoorDash-inspired design with:
+> - Sticky white header with red accents
+> - Hero section with compelling CTAs
+> - Clean restaurant cards with shadow hover effects
+> - Responsive grid layout (1-2-3-4 columns)
+> - Veg/non-veg indicators and rating displays
+>
+> Screenshots coming soon!
 
 ## Course Information
 
@@ -234,6 +343,7 @@ This project is part of the **Namaste React** course by [NamasteDev](https://nam
 
 - **Akshay Saini** - Instructor of Namaste React course
 - **NamasteDev** - For providing an excellent learning platform
+- **DoorDash** - Design inspiration from their "Prism" design language
 - **Unsplash** - For food images used in the application
 
 ## License
