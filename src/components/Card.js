@@ -4,7 +4,10 @@ import { FaMotorcycle, FaRegStar } from "react-icons/fa";
 import { CLOUDINARY_URL } from "../utils/constants";
 
 const Card = ({ imageId, rating, name, cuisines, costForTwo, eta }) => {
-  const bgImageUrl = `${CLOUDINARY_URL}${imageId}`;
+  // Check if imageId is a full URL or a Cloudinary ID
+  const bgImageUrl = imageId?.startsWith('http')
+    ? imageId
+    : `${CLOUDINARY_URL}${imageId}`;
 
   return (
     <div className="h-[300px] p-2 w-[250px] relative">

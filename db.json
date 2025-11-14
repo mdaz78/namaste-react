@@ -16,7 +16,7 @@
                         "info": {
                           "id": "123456",
                           "name": "Pizza Paradise",
-                          "cloudinaryImageId": "rng/md/carousel/production/pizza123",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=660&h=400&fit=crop",
                           "locality": "MG Road",
                           "areaName": "Central District",
                           "costForTwo": "₹400 for two",
@@ -40,7 +40,7 @@
                         "info": {
                           "id": "234567",
                           "name": "Burger Hub",
-                          "cloudinaryImageId": "rng/md/carousel/production/burger456",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=660&h=400&fit=crop",
                           "locality": "Park Street",
                           "areaName": "Downtown",
                           "costForTwo": "₹300 for two",
@@ -64,7 +64,7 @@
                         "info": {
                           "id": "345678",
                           "name": "Green Bites",
-                          "cloudinaryImageId": "rng/md/carousel/production/healthy789",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=660&h=400&fit=crop",
                           "locality": "Eco Park",
                           "areaName": "Green Zone",
                           "costForTwo": "₹250 for two",
@@ -88,7 +88,7 @@
                         "info": {
                           "id": "456789",
                           "name": "Spice Kingdom",
-                          "cloudinaryImageId": "rng/md/carousel/production/biryani101",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=660&h=400&fit=crop",
                           "locality": "Connaught Place",
                           "areaName": "Central Market",
                           "costForTwo": "₹500 for two",
@@ -112,7 +112,7 @@
                         "info": {
                           "id": "567890",
                           "name": "Chinese Dragon",
-                          "cloudinaryImageId": "rng/md/carousel/production/chinese202",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=660&h=400&fit=crop",
                           "locality": "Chinatown",
                           "areaName": "East District",
                           "costForTwo": "₹350 for two",
@@ -136,7 +136,7 @@
                         "info": {
                           "id": "678901",
                           "name": "Dessert Delight",
-                          "cloudinaryImageId": "rng/md/carousel/production/dessert303",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1551024601-bec78aea704b?w=660&h=400&fit=crop",
                           "locality": "Sweet Street",
                           "areaName": "Mall Road",
                           "costForTwo": "₹200 for two",
@@ -160,7 +160,7 @@
                         "info": {
                           "id": "789012",
                           "name": "Sushi Station",
-                          "cloudinaryImageId": "rng/md/carousel/production/sushi404",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=660&h=400&fit=crop",
                           "locality": "Marina Bay",
                           "areaName": "Waterfront",
                           "costForTwo": "₹800 for two",
@@ -184,7 +184,7 @@
                         "info": {
                           "id": "890123",
                           "name": "South Spice",
-                          "cloudinaryImageId": "rng/md/carousel/production/dosa505",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1630383249896-424e482df921?w=660&h=400&fit=crop",
                           "locality": "Temple Road",
                           "areaName": "South District",
                           "costForTwo": "₹300 for two",
@@ -208,7 +208,7 @@
                         "info": {
                           "id": "901234",
                           "name": "Pasta Palace",
-                          "cloudinaryImageId": "rng/md/carousel/production/pasta606",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=660&h=400&fit=crop",
                           "locality": "Italian Quarter",
                           "areaName": "West End",
                           "costForTwo": "₹450 for two",
@@ -232,7 +232,7 @@
                         "info": {
                           "id": "012345",
                           "name": "BBQ Nation",
-                          "cloudinaryImageId": "rng/md/carousel/production/bbq707",
+                          "cloudinaryImageId": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=660&h=400&fit=crop",
                           "locality": "Grill Street",
                           "areaName": "Food Plaza",
                           "costForTwo": "₹600 for two",

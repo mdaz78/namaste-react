@@ -15,7 +15,7 @@ export default function HomeComponent() {
     const fetchRestaurants = async () => {
       const data = await axios.get(API_URL);
       const restaurantData =
-        data?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+        data?.data?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
           ?.restaurants || [];
 
       console.log({ data: data?.data?.data?.cards, restaurantData });
