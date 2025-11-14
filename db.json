@@ -1,0 +1,641 @@
+{
+  "restaurants": {
+    "success": true,
+    "message": "Restaurant List fetched successfully",
+    "data": {
+      "data": {
+        "cards": [
+          {},
+          {
+            "card": {
+              "card": {
+                "gridElements": {
+                  "infoWithStyle": {
+                    "restaurants": [
+                      {
+                        "info": {
+                          "id": "123456",
+                          "name": "Pizza Paradise",
+                          "cloudinaryImageId": "rng/md/carousel/production/pizza123",
+                          "locality": "MG Road",
+                          "areaName": "Central District",
+                          "costForTwo": "₹400 for two",
+                          "cuisines": ["Pizza", "Italian", "Fast Food"],
+                          "avgRating": 4.3,
+                          "avgRatingString": "4.3",
+                          "totalRatingsString": "10K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 30,
+                            "lastMileTravel": 3.5,
+                            "slaString": "30 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "50% OFF",
+                            "subHeader": "UPTO ₹100"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "234567",
+                          "name": "Burger Hub",
+                          "cloudinaryImageId": "rng/md/carousel/production/burger456",
+                          "locality": "Park Street",
+                          "areaName": "Downtown",
+                          "costForTwo": "₹300 for two",
+                          "cuisines": ["Burgers", "American", "Fast Food"],
+                          "avgRating": 4.1,
+                          "avgRatingString": "4.1",
+                          "totalRatingsString": "8K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 25,
+                            "lastMileTravel": 2.8,
+                            "slaString": "25 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "40% OFF",
+                            "subHeader": "UPTO ₹80"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "345678",
+                          "name": "Green Bites",
+                          "cloudinaryImageId": "rng/md/carousel/production/healthy789",
+                          "locality": "Eco Park",
+                          "areaName": "Green Zone",
+                          "costForTwo": "₹250 for two",
+                          "cuisines": ["Healthy", "Salads", "Vegan"],
+                          "avgRating": 4.5,
+                          "avgRatingString": "4.5",
+                          "totalRatingsString": "5K+ ratings",
+                          "veg": true,
+                          "sla": {
+                            "deliveryTime": 20,
+                            "lastMileTravel": 1.5,
+                            "slaString": "20 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "30% OFF",
+                            "subHeader": "UPTO ₹60"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "456789",
+                          "name": "Spice Kingdom",
+                          "cloudinaryImageId": "rng/md/carousel/production/biryani101",
+                          "locality": "Connaught Place",
+                          "areaName": "Central Market",
+                          "costForTwo": "₹500 for two",
+                          "cuisines": ["Indian", "Biryani", "Mughlai"],
+                          "avgRating": 4.6,
+                          "avgRatingString": "4.6",
+                          "totalRatingsString": "15K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 35,
+                            "lastMileTravel": 4.2,
+                            "slaString": "35 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "20% OFF",
+                            "subHeader": "UPTO ₹120"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "567890",
+                          "name": "Chinese Dragon",
+                          "cloudinaryImageId": "rng/md/carousel/production/chinese202",
+                          "locality": "Chinatown",
+                          "areaName": "East District",
+                          "costForTwo": "₹350 for two",
+                          "cuisines": ["Chinese", "Asian", "Thai"],
+                          "avgRating": 4.2,
+                          "avgRatingString": "4.2",
+                          "totalRatingsString": "7K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 28,
+                            "lastMileTravel": 3.0,
+                            "slaString": "28 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "35% OFF",
+                            "subHeader": "UPTO ₹90"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "678901",
+                          "name": "Dessert Delight",
+                          "cloudinaryImageId": "rng/md/carousel/production/dessert303",
+                          "locality": "Sweet Street",
+                          "areaName": "Mall Road",
+                          "costForTwo": "₹200 for two",
+                          "cuisines": ["Desserts", "Ice Cream", "Bakery"],
+                          "avgRating": 4.4,
+                          "avgRatingString": "4.4",
+                          "totalRatingsString": "6K+ ratings",
+                          "veg": true,
+                          "sla": {
+                            "deliveryTime": 15,
+                            "lastMileTravel": 1.2,
+                            "slaString": "15 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "25% OFF",
+                            "subHeader": "UPTO ₹50"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "789012",
+                          "name": "Sushi Station",
+                          "cloudinaryImageId": "rng/md/carousel/production/sushi404",
+                          "locality": "Marina Bay",
+                          "areaName": "Waterfront",
+                          "costForTwo": "₹800 for two",
+                          "cuisines": ["Japanese", "Sushi", "Asian"],
+                          "avgRating": 4.7,
+                          "avgRatingString": "4.7",
+                          "totalRatingsString": "12K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 40,
+                            "lastMileTravel": 5.5,
+                            "slaString": "40 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "15% OFF",
+                            "subHeader": "UPTO ₹150"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "890123",
+                          "name": "South Spice",
+                          "cloudinaryImageId": "rng/md/carousel/production/dosa505",
+                          "locality": "Temple Road",
+                          "areaName": "South District",
+                          "costForTwo": "₹300 for two",
+                          "cuisines": ["South Indian", "Dosa", "Idli"],
+                          "avgRating": 4.5,
+                          "avgRatingString": "4.5",
+                          "totalRatingsString": "9K+ ratings",
+                          "veg": true,
+                          "sla": {
+                            "deliveryTime": 22,
+                            "lastMileTravel": 2.3,
+                            "slaString": "22 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "30% OFF",
+                            "subHeader": "UPTO ₹70"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "901234",
+                          "name": "Pasta Palace",
+                          "cloudinaryImageId": "rng/md/carousel/production/pasta606",
+                          "locality": "Italian Quarter",
+                          "areaName": "West End",
+                          "costForTwo": "₹450 for two",
+                          "cuisines": ["Italian", "Pasta", "Continental"],
+                          "avgRating": 4.4,
+                          "avgRatingString": "4.4",
+                          "totalRatingsString": "11K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 32,
+                            "lastMileTravel": 3.8,
+                            "slaString": "32 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "25% OFF",
+                            "subHeader": "UPTO ₹100"
+                          }
+                        }
+                      },
+                      {
+                        "info": {
+                          "id": "012345",
+                          "name": "BBQ Nation",
+                          "cloudinaryImageId": "rng/md/carousel/production/bbq707",
+                          "locality": "Grill Street",
+                          "areaName": "Food Plaza",
+                          "costForTwo": "₹600 for two",
+                          "cuisines": ["BBQ", "Grilled", "Continental"],
+                          "avgRating": 4.3,
+                          "avgRatingString": "4.3",
+                          "totalRatingsString": "14K+ ratings",
+                          "veg": false,
+                          "sla": {
+                            "deliveryTime": 38,
+                            "lastMileTravel": 4.5,
+                            "slaString": "38 mins"
+                          },
+                          "aggregatedDiscountInfoV3": {
+                            "header": "20% OFF",
+                            "subHeader": "UPTO ₹130"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "menu_123456": {
+    "status": true,
+    "message": "Restaurant Menu fetched successfully",
+    "data": {
+      "cards": [
+        {},
+        {},
+        {
+          "card": {
+            "card": {
+              "info": {
+                "id": "123456",
+                "name": "Pizza Paradise",
+                "cloudinaryImageId": "rng/md/carousel/production/pizza123",
+                "locality": "MG Road",
+                "areaName": "Central District",
+                "costForTwo": "₹400 for two",
+                "costForTwoMessage": "₹400 for two",
+                "cuisines": ["Pizza", "Italian", "Fast Food"],
+                "avgRating": 4.3,
+                "avgRatingString": "4.3",
+                "totalRatingsString": "10K+ ratings",
+                "sla": {
+                  "deliveryTime": 30,
+                  "lastMileTravel": 3.5,
+                  "lastMileTravelString": "3.5 km",
+                  "slaString": "30 mins"
+                }
+              }
+            }
+          }
+        },
+        {},
+        {
+          "groupedCard": {
+            "cardGroupMap": {
+              "REGULAR": {
+                "cards": [
+                  {},
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.ItemCategory",
+                        "title": "Recommended",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_001",
+                                "name": "Margherita Pizza",
+                                "category": "Pizza",
+                                "description": "Classic delight with 100% real mozzarella cheese",
+                                "imageId": "pizza_margherita_123",
+                                "price": 29900,
+                                "defaultPrice": 29900
+                              }
+                            }
+                          },
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_002",
+                                "name": "Pepperoni Pizza",
+                                "category": "Pizza",
+                                "description": "American classic with spicy pepperoni",
+                                "imageId": "pizza_pepperoni_456",
+                                "price": 39900
+                              }
+                            }
+                          },
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_003",
+                                "name": "Veggie Supreme",
+                                "category": "Pizza",
+                                "description": "Loaded with fresh vegetables and cheese",
+                                "imageId": "pizza_veggie_789",
+                                "price": 34900,
+                                "defaultPrice": 34900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.presentation",
+                        "title": "Specialty Pizzas",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_004",
+                                "name": "BBQ Chicken Pizza",
+                                "category": "Pizza",
+                                "description": "Grilled chicken with BBQ sauce, onions, and cheese",
+                                "imageId": "pizza_bbq_chicken_101",
+                                "price": 44900
+                              }
+                            }
+                          },
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_005",
+                                "name": "Hawaiian Pizza",
+                                "category": "Pizza",
+                                "description": "Tropical delight with ham and pineapple",
+                                "imageId": "pizza_hawaiian_202",
+                                "price": 42900,
+                                "defaultPrice": 42900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.presentation",
+                        "title": "Beverages",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_006",
+                                "name": "Coca Cola",
+                                "category": "Beverages",
+                                "description": "Chilled 500ml Coca Cola",
+                                "imageId": "beverage_coke_707",
+                                "price": 5900,
+                                "defaultPrice": 5900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "menu_234567": {
+    "status": true,
+    "message": "Restaurant Menu fetched successfully",
+    "data": {
+      "cards": [
+        {},
+        {},
+        {
+          "card": {
+            "card": {
+              "info": {
+                "id": "234567",
+                "name": "Burger Hub",
+                "cloudinaryImageId": "rng/md/carousel/production/burger456",
+                "locality": "Park Street",
+                "areaName": "Downtown",
+                "costForTwo": "₹300 for two",
+                "costForTwoMessage": "₹300 for two",
+                "cuisines": ["Burgers", "American", "Fast Food"],
+                "avgRating": 4.1,
+                "avgRatingString": "4.1",
+                "totalRatingsString": "8K+ ratings",
+                "sla": {
+                  "deliveryTime": 25,
+                  "lastMileTravel": 2.8,
+                  "lastMileTravelString": "2.8 km",
+                  "slaString": "25 mins"
+                }
+              }
+            }
+          }
+        },
+        {},
+        {
+          "groupedCard": {
+            "cardGroupMap": {
+              "REGULAR": {
+                "cards": [
+                  {},
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.ItemCategory",
+                        "title": "Best Sellers",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_101",
+                                "name": "Classic Beef Burger",
+                                "category": "Burgers",
+                                "description": "Juicy beef patty with lettuce, tomato, and special sauce",
+                                "imageId": "burger_classic_001",
+                                "price": 19900,
+                                "defaultPrice": 19900
+                              }
+                            }
+                          },
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_102",
+                                "name": "Chicken Burger",
+                                "category": "Burgers",
+                                "description": "Crispy chicken fillet with mayo and pickles",
+                                "imageId": "burger_chicken_002",
+                                "price": 17900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.presentation",
+                        "title": "Sides",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_103",
+                                "name": "French Fries",
+                                "category": "Sides",
+                                "description": "Crispy golden fries",
+                                "imageId": "fries_001",
+                                "price": 9900,
+                                "defaultPrice": 9900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "menu_456789": {
+    "status": true,
+    "message": "Restaurant Menu fetched successfully",
+    "data": {
+      "cards": [
+        {},
+        {},
+        {
+          "card": {
+            "card": {
+              "info": {
+                "id": "456789",
+                "name": "Spice Kingdom",
+                "cloudinaryImageId": "rng/md/carousel/production/biryani101",
+                "locality": "Connaught Place",
+                "areaName": "Central Market",
+                "costForTwo": "₹500 for two",
+                "costForTwoMessage": "₹500 for two",
+                "cuisines": ["Indian", "Biryani", "Mughlai"],
+                "avgRating": 4.6,
+                "avgRatingString": "4.6",
+                "totalRatingsString": "15K+ ratings",
+                "sla": {
+                  "deliveryTime": 35,
+                  "lastMileTravel": 4.2,
+                  "lastMileTravelString": "4.2 km",
+                  "slaString": "35 mins"
+                }
+              }
+            }
+          }
+        },
+        {},
+        {
+          "groupedCard": {
+            "cardGroupMap": {
+              "REGULAR": {
+                "cards": [
+                  {},
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.ItemCategory",
+                        "title": "Biryani Specials",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_201",
+                                "name": "Chicken Biryani",
+                                "category": "Biryani",
+                                "description": "Aromatic basmati rice with tender chicken pieces",
+                                "imageId": "biryani_chicken_001",
+                                "price": 34900,
+                                "defaultPrice": 34900
+                              }
+                            }
+                          },
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_202",
+                                "name": "Mutton Biryani",
+                                "category": "Biryani",
+                                "description": "Rich and flavorful mutton biryani",
+                                "imageId": "biryani_mutton_002",
+                                "price": 44900
+                              }
+                            }
+                          },
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_203",
+                                "name": "Veg Biryani",
+                                "category": "Biryani",
+                                "description": "Mixed vegetables with fragrant basmati rice",
+                                "imageId": "biryani_veg_003",
+                                "price": 24900,
+                                "defaultPrice": 24900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  },
+                  {
+                    "card": {
+                      "card": {
+                        "@type": "type.googleapis.com/swiggy.presentation",
+                        "title": "Curries",
+                        "itemCards": [
+                          {
+                            "card": {
+                              "info": {
+                                "id": "item_204",
+                                "name": "Butter Chicken",
+                                "category": "Curries",
+                                "description": "Creamy tomato-based curry with tender chicken",
+                                "imageId": "curry_butter_chicken_001",
+                                "price": 29900,
+                                "defaultPrice": 29900
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
