@@ -8,6 +8,7 @@ export default defineConfig({
       include: '**/*.{jsx,js}',
     }),
   ],
+  publicDir: 'public',
   esbuild: {
     loader: 'jsx',
     include: /src\/.*\.jsx?$/,
