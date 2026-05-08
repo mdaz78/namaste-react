@@ -2,6 +2,57 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Development
+
+### Setup
+
+```bash
+npm install --legacy-peer-deps
+```
+
+The `--legacy-peer-deps` flag is required because `eslint-plugin-jsx-a11y@^6` still declares its peer range against ESLint `<= 9` while this project runs ESLint 10. The plugin's rule logic works fine on ESLint 10; the flag bypasses npm's strict peer-dep check. Drop the flag once jsx-a11y publishes an ESLint 10-compatible release.
+
+`npm install` runs the `prepare` script, which bootstraps Husky's `.husky/_` git-hooks directory automatically. No manual setup is needed.
+
+### Scripts
+
+| Command                | What it does                                         |
+| ---------------------- | ---------------------------------------------------- |
+| `npm run dev`          | Start the Vite dev server                            |
+| `npm run build`        | Type-check (`tsc -b`) and produce a production build |
+| `npm run preview`      | Preview the production build locally                 |
+| `npm run lint`         | Run ESLint over the repo                             |
+| `npm run lint:fix`     | Run ESLint with `--fix`                              |
+| `npm run format`       | Format the repo with Prettier                        |
+| `npm run format:check` | Check Prettier formatting without writing            |
+| `npm run typecheck`    | Project-references type check (`tsc -b --noEmit`)    |
+
+### Git hooks
+
+A pre-commit hook runs `lint-staged` on staged files:
+
+- `*.{ts,tsx,js,jsx}` → `eslint --fix` then `prettier --write`
+- `*.{json,md,css,html,yml,yaml}` → `prettier --write`
+- A whole-project `tsc -b --noEmit` step runs in addition; if a type error exists anywhere in the repo (including in unstaged files), the commit will be blocked. Use `git commit --no-verify` to bypass the hooks when intentional, but the same checks run in CI on every PR.
+
+A commit-msg hook runs `commitlint` against `@commitlint/config-conventional`, so messages must follow `type(scope?): subject` (e.g. `feat(routing): handle 404 fallback`).
+
+### Recovering interrupted commits
+
+If `git commit` is interrupted mid-hook (Ctrl-C, OOM, or a system sleep), `lint-staged` may leave your unstaged changes in a labeled stash entry. To recover:
+
+```bash
+git stash list
+# Look for "On <branch>: lint-staged automatic backup"
+git stash apply stash@{N}
+```
+
+Avoid `git reset --hard` or `git checkout .` after an interrupted run until you have inspected the stash list.
+
+### Continuous integration
+
+GitHub Actions workflow `.github/workflows/ci.yml` runs on push and pull-request events targeting `main`. It executes `typecheck → lint → format:check → build` on Node 20 LTS.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
@@ -42,15 +93,15 @@ export default defineConfig([
       // other options...
     },
   },
-])
+]);
 ```
 
 You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
 
 ```js
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+import reactX from 'eslint-plugin-react-x';
+import reactDom from 'eslint-plugin-react-dom';
 
 export default defineConfig([
   globalIgnores(['dist']),
@@ -71,5 +122,5 @@ export default defineConfig([
       // other options...
     },
   },
-])
+]);
 ```
