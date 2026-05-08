@@ -1,7 +1,7 @@
 ---
 title: 'feat: Production tooling setup (Prettier, ESLint hardening, Husky, lint-staged, commitlint, CI)'
 type: feat
-status: active
+status: completed
 date: 2026-05-08
 origin: docs/brainstorms/2026-05-08-production-tooling-setup-requirements.md
 ---
