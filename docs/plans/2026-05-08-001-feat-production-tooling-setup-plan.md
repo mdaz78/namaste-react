@@ -16,20 +16,20 @@ Land a production-grade developer-tooling baseline in seven sequential, atomic-c
 
 ## Problem Frame
 
-Repo currently has only a minimal ESLint flat config; Prettier, Husky, lint-staged, commitlint, and CI are absent (see origin: `docs/brainstorms/2026-05-08-production-tooling-setup-requirements.md`). The plan codifies the *order* and *integration glue* between these tools, since the painful failure modes — Prettier vs. ESLint disagreements, Husky hooks not bootstrapping for new contributors, `tsc --noEmit` silently ignoring `tsconfig.json` under lint-staged — all live in the seams between packages.
+Repo currently has only a minimal ESLint flat config; Prettier, Husky, lint-staged, commitlint, and CI are absent (see origin: `docs/brainstorms/2026-05-08-production-tooling-setup-requirements.md`). The plan codifies the _order_ and _integration glue_ between these tools, since the painful failure modes — Prettier vs. ESLint disagreements, Husky hooks not bootstrapping for new contributors, `tsc --noEmit` silently ignoring `tsconfig.json` under lint-staged — all live in the seams between packages.
 
 ---
 
 ## Requirements
 
-- R1. Prettier installed; `.prettierrc.json` with `singleQuote: true, semi: true, printWidth: 100, tabWidth: 2, trailingComma: 'all', arrowParens: 'always'`; `.prettierignore` covers `dist/`, `node_modules/`, `package-lock.json`. *(origin R1, R2, R3)*
-- R2. ESLint flat config retains current base and adds `eslint-plugin-jsx-a11y`, `eslint-plugin-import` (or `eslint-plugin-import-x` if needed for flat-config compat — see Open Questions), and `eslint-config-prettier/flat` last in the extends chain so Prettier wins on stylistic rules. *(origin R4–R7)*
-- R3. Commitlint installed (`@commitlint/cli` + `@commitlint/config-conventional`); `commitlint.config.js` extends conventional. *(origin R8)*
-- R4. Husky v9 installed; `prepare` script set so `.husky/` and hooks bootstrap on `npm install` for any contributor. *(origin R10)*
-- R5. `.husky/pre-commit` runs lint-staged; lint-staged config runs `prettier --write` and `eslint --fix` on staged source files **and** runs project-wide `tsc --noEmit` via a function-form entry. *(origin R11, R12)*
-- R6. `.husky/commit-msg` runs `npx --no -- commitlint --edit $1` and rejects non-conforming messages. *(origin R9)*
-- R7. `package.json` exposes `format`, `format:check`, `lint`, `lint:fix`, `typecheck`, `prepare`. *(origin R13)*
-- R8. `.github/workflows/ci.yml` runs on push and pull_request to `main`, installs deps with `npm ci`, then runs `typecheck → lint → format:check → build`. Uses Node 20 LTS with npm cache keyed on `package-lock.json`. *(origin R14–R16)*
+- R1. Prettier installed; `.prettierrc.json` with `singleQuote: true, semi: true, printWidth: 100, tabWidth: 2, trailingComma: 'all', arrowParens: 'always'`; `.prettierignore` covers `dist/`, `node_modules/`, `package-lock.json`. _(origin R1, R2, R3)_
+- R2. ESLint flat config retains current base and adds `eslint-plugin-jsx-a11y`, `eslint-plugin-import` (or `eslint-plugin-import-x` if needed for flat-config compat — see Open Questions), and `eslint-config-prettier/flat` last in the extends chain so Prettier wins on stylistic rules. _(origin R4–R7)_
+- R3. Commitlint installed (`@commitlint/cli` + `@commitlint/config-conventional`); `commitlint.config.js` extends conventional. _(origin R8)_
+- R4. Husky v9 installed; `prepare` script set so `.husky/` and hooks bootstrap on `npm install` for any contributor. _(origin R10)_
+- R5. `.husky/pre-commit` runs lint-staged; lint-staged config runs `prettier --write` and `eslint --fix` on staged source files **and** runs project-wide `tsc --noEmit` via a function-form entry. _(origin R11, R12)_
+- R6. `.husky/commit-msg` runs `npx --no -- commitlint --edit $1` and rejects non-conforming messages. _(origin R9)_
+- R7. `package.json` exposes `format`, `format:check`, `lint`, `lint:fix`, `typecheck`, `prepare`. _(origin R13)_
+- R8. `.github/workflows/ci.yml` runs on push and pull*request to `main`, installs deps with `npm ci`, then runs `typecheck → lint → format:check → build`. Uses Node 20 LTS with npm cache keyed on `package-lock.json`. *(origin R14–R16)\_
 
 ---
 
@@ -72,8 +72,8 @@ Repo currently has only a minimal ESLint flat config; Prettier, Husky, lint-stag
 
 ## Key Technical Decisions
 
-- **Husky over `simple-git-hooks` / `lefthook`** — de-facto React/TS standard, simplest v9 init, integrates cleanly with lint-staged. *(carried from origin)*
-- **`@commitlint/config-conventional` with no custom rules** — sufficient for this repo; preserves compatibility with downstream tooling like changelog generators if ever adopted. *(carried from origin)*
+- **Husky over `simple-git-hooks` / `lefthook`** — de-facto React/TS standard, simplest v9 init, integrates cleanly with lint-staged. _(carried from origin)_
+- **`@commitlint/config-conventional` with no custom rules** — sufficient for this repo; preserves compatibility with downstream tooling like changelog generators if ever adopted. _(carried from origin)_
 - **Prettier owns stylistic rules; ESLint defers via `eslint-config-prettier/flat`** — flat-config friendly preset, prevents the "two formatters fighting" failure mode.
 - **`tsc --noEmit` runs from lint-staged in the pre-commit hook (not pre-push) using the function form** — fast feedback for a small repo; the function form is the documented way to avoid lint-staged appending staged paths and breaking `tsconfig` resolution.
 - **CI order: typecheck → lint → format:check → build** — fastest-failing checks first.
@@ -91,16 +91,16 @@ Repo currently has only a minimal ESLint flat config; Prettier, Husky, lint-stag
 
 ### Deferred to Implementation
 
-- **`eslint-plugin-import` vs. `eslint-plugin-import-x`** *(Affects R2)*: At install time, attempt `eslint-plugin-import` first. If its flat-config exports do not work with current ESLint 10.x, fall back to `eslint-plugin-import-x` (drop-in fork with first-class flat-config support). Decision is reversible and only affects the two extends lines.
-- **`import/order` exact group ordering and alphabetization options** *(Affects R2)*: Start with `groups: ['builtin','external','internal','parent','sibling','index']`, `newlines-between: 'always'`, `alphabetize: { order: 'asc' }`. Refine after seeing it run on real code.
-- **Whether to enable `import/no-cycle`** *(Affects R2)*: Skip in this iteration; rule is slow and tiny codebase has zero cycles. Can enable later.
-- **Exact tool versions** *(Affects all units)*: Resolve at install time using each package's `latest` dist-tag, with one upper-bound exception — pin to majors that match current ESLint 10.x compatibility (`typescript-eslint` 8.x is verified compatible; new plugins must support flat config).
+- **`eslint-plugin-import` vs. `eslint-plugin-import-x`** _(Affects R2)_: At install time, attempt `eslint-plugin-import` first. If its flat-config exports do not work with current ESLint 10.x, fall back to `eslint-plugin-import-x` (drop-in fork with first-class flat-config support). Decision is reversible and only affects the two extends lines.
+- **`import/order` exact group ordering and alphabetization options** _(Affects R2)_: Start with `groups: ['builtin','external','internal','parent','sibling','index']`, `newlines-between: 'always'`, `alphabetize: { order: 'asc' }`. Refine after seeing it run on real code.
+- **Whether to enable `import/no-cycle`** _(Affects R2)_: Skip in this iteration; rule is slow and tiny codebase has zero cycles. Can enable later.
+- **Exact tool versions** _(Affects all units)_: Resolve at install time using each package's `latest` dist-tag, with one upper-bound exception — pin to majors that match current ESLint 10.x compatibility (`typescript-eslint` 8.x is verified compatible; new plugins must support flat config).
 
 ---
 
 ## High-Level Technical Design
 
-> *This illustrates the intended dependency shape and is directional guidance for review, not implementation specification. The implementing agent should treat it as context, not code to reproduce.*
+> _This illustrates the intended dependency shape and is directional guidance for review, not implementation specification. The implementing agent should treat it as context, not code to reproduce._
 
 ```text
 git commit -m "feat: foo"
@@ -146,26 +146,31 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** none
 
 **Files:**
+
 - Create: `.prettierrc.json`
 - Create: `.prettierignore`
 - Modify: `package.json` (add `prettier` to `devDependencies`)
 - Modify (reformatting only): `src/App.tsx`, `src/main.tsx`, `eslint.config.js`, `vite.config.ts`, `index.html`, `tsconfig*.json`, `package.json`, `README.md`
 
 **Approach:**
+
 - Install `prettier` (latest 3.x) as a dev dependency.
 - `.prettierrc.json` contents: the six options from origin R1 (single quote, semi, printWidth 100, tabWidth 2, trailingComma all, arrowParens always).
 - `.prettierignore` lines: `dist/`, `node_modules/`, `package-lock.json`, `.husky/`, `coverage/`, `*.min.*`.
 - Run `npx prettier --write .` once to reformat the tree as a separate commit so the diff is reviewable.
 
 **Patterns to follow:**
+
 - None in repo; `.prettierrc.json` over `.prettierrc.js` because the config is static and JSON is universally tooling-friendly.
 
 **Test scenarios:**
+
 - Verification — running `npx prettier --check .` exits 0 immediately after the formatting commit.
 - Verification — `.prettierignore` excludes `dist/` (proven by `npx prettier --check dist || true` not erroring on dist contents — manual spot check).
 - Test expectation: none — pure tooling/config; verified via operational check above.
 
 **Verification:**
+
 - `npx prettier --check .` exits 0 on the post-reformat tree.
 - The reformat commit touches only whitespace/quotes/trailing commas; reviewer can scan it quickly.
 
@@ -180,10 +185,12 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** U1 (Prettier needs to exist before `eslint-config-prettier` is meaningful)
 
 **Files:**
+
 - Modify: `eslint.config.js`
-- Modify: `package.json` (add `eslint-plugin-jsx-a11y`, `eslint-plugin-import` *or* `eslint-plugin-import-x`, `eslint-config-prettier`)
+- Modify: `package.json` (add `eslint-plugin-jsx-a11y`, `eslint-plugin-import` _or_ `eslint-plugin-import-x`, `eslint-config-prettier`)
 
 **Approach:**
+
 - Install plugins. Try `eslint-plugin-import` first; if the flat-config export does not exist or errors against ESLint 10, install `eslint-plugin-import-x` and use that.
 - Extend `eslint.config.js`:
   - Add `jsxA11y.flatConfigs.recommended` (or equivalent flat preset name from the current jsx-a11y release) to the `extends` array.
@@ -192,15 +199,18 @@ ESLint stack (flat config, evaluated in order):
 - Keep `globalIgnores(['dist'])` and `languageOptions.globals: globals.browser` intact.
 
 **Patterns to follow:**
+
 - Existing `eslint.config.js` `defineConfig([...])` shape — do not regress to legacy config.
 
 **Test scenarios:**
+
 - Happy path — `npm run lint` exits 0 after changes.
 - Edge case — adding an `<img>` tag without `alt` to a scratch `.tsx` file produces a `jsx-a11y/alt-text` error; remove the scratch file before committing.
 - Edge case — importing the same module twice in a scratch file triggers `import/no-duplicates`; remove scratch before committing.
 - Test expectation: none beyond the manual scratch-file probes above — config-only change.
 
 **Verification:**
+
 - `npm run lint` exits 0.
 - ESLint reports no rule conflicts with Prettier (no rules from `@stylistic`, `quotes`, `semi`, `comma-dangle` etc. fire).
 
@@ -215,9 +225,11 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** U1, U2
 
 **Files:**
+
 - Modify: `package.json`
 
 **Approach:**
+
 - Add scripts:
   - `format`: `prettier --write .`
   - `format:check`: `prettier --check .`
@@ -227,13 +239,16 @@ ESLint stack (flat config, evaluated in order):
 - Run all four scripts locally and confirm exit 0.
 
 **Patterns to follow:**
+
 - Matches typical Vite + TS + React `package.json` script idioms.
 
 **Test scenarios:**
+
 - Verification — `npm run format:check && npm run lint && npm run typecheck && npm run build` exits 0 in sequence.
 - Test expectation: none — script wiring; verified via the run above.
 
 **Verification:**
+
 - All four new scripts exit 0 against current `main`.
 
 ---
@@ -247,23 +262,28 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** U3 (so `prepare` lives next to the other scripts in a consistent edit)
 
 **Files:**
+
 - Create: `.husky/` (directory; `husky init` also creates a default `.husky/pre-commit` placeholder — replace its contents in U5, do not delete it)
 - Modify: `package.json` (`prepare`: `husky` is added by the init command)
 
 **Approach:**
+
 - `npm install --save-dev husky`.
 - `npx husky init` — creates `.husky/pre-commit` with a placeholder `npm test`. Leave the directory; rewrite the file in U5.
 - Confirm `package.json` now has `"prepare": "husky"`.
 - Commit `.husky/pre-commit` (placeholder) and `package.json` changes — keeps the commit small and atomic.
 
 **Patterns to follow:**
+
 - Husky v9 documentation flow: https://typicode.github.io/husky/get-started.html.
 
 **Test scenarios:**
+
 - Happy path — fresh `npm install` (in a clean clone) recreates `.husky/_/` and the hooks remain executable.
 - Test expectation: none — bootstrap; verified by the smoke test above (deferred to U5/U6 e2e check).
 
 **Verification:**
+
 - `.husky/` exists, `package.json` has `"prepare": "husky"`, `git config core.hooksPath` resolves to `.husky/_`.
 
 ---
@@ -277,23 +297,27 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** U4
 
 **Files:**
+
 - Create: `lint-staged.config.js` (preferred over `package.json` so the function form works cleanly without quoting issues)
 - Modify: `.husky/pre-commit`
 - Modify: `package.json` (add `lint-staged` to `devDependencies`)
 
 **Approach:**
+
 - `npm install --save-dev lint-staged`.
 - `lint-staged.config.js` (ESM, since `package.json` already has `"type": "module"`):
   - `'*.{ts,tsx,js,jsx}': ['eslint --fix', 'prettier --write']`
   - `'*.{json,md,css,html,yml,yaml}': ['prettier --write']`
-  - `'*.{ts,tsx}': () => 'tsc -b --noEmit'` *(function form prevents file-args being appended; see lint-staged docs gotcha)*
+  - `'*.{ts,tsx}': () => 'tsc -b --noEmit'` _(function form prevents file-args being appended; see lint-staged docs gotcha)_
 - Replace `.husky/pre-commit` contents with: `npx lint-staged`.
 - Manually test by editing a TS file with a missing trailing comma, staging it, and running `git commit -m "chore: probe"` — lint-staged should reformat in place and the commit should succeed.
 
 **Patterns to follow:**
+
 - lint-staged docs example pattern using a config file.
 
 **Test scenarios:**
+
 - Happy path — staging a `*.tsx` file with mixed quotes triggers `eslint --fix` + `prettier --write`; the commit succeeds with the file reformatted. **Covers AE1.**
 - Edge case — staging a `*.md` file runs only `prettier --write` (not eslint), since the glob `'*.{ts,tsx,js,jsx}'` does not match.
 - Error path — introducing a `tsc` error somewhere in `src/` and staging an unrelated file causes `tsc -b --noEmit` to fail, which fails the pre-commit hook. **Covers AE3 (local half).**
@@ -301,6 +325,7 @@ ESLint stack (flat config, evaluated in order):
 - Test expectation: behavioral probes above, manually executed once during U5; no automated test files for hook behavior.
 
 **Verification:**
+
 - A commit with mixed-quote TS gets reformatted automatically and lands cleanly.
 - A commit attempted while the project has a type error is rejected.
 
@@ -315,11 +340,13 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** U4
 
 **Files:**
+
 - Create: `commitlint.config.js`
 - Create: `.husky/commit-msg`
 - Modify: `package.json` (add `@commitlint/cli`, `@commitlint/config-conventional`)
 
 **Approach:**
+
 - `npm install --save-dev @commitlint/cli @commitlint/config-conventional`.
 - `commitlint.config.js`: `export default { extends: ['@commitlint/config-conventional'] };`
 - `.husky/commit-msg` contents: a single line — `npx --no -- commitlint --edit $1`. (No shebang needed in Husky v9; the file is sourced directly.)
@@ -328,15 +355,18 @@ ESLint stack (flat config, evaluated in order):
   - `git commit -m "feat: probe commitlint"` is accepted.
 
 **Patterns to follow:**
+
 - commitlint local-setup docs (Context7 `/conventional-changelog/commitlint`).
 
 **Test scenarios:**
+
 - Happy path — `git commit -m "feat(routing): handle 404 fallback"` is accepted. **Covers AE2 (positive half).**
 - Error path — `git commit -m "fixed stuff"` is rejected with a `type-enum` violation message. **Covers AE2 (negative half).**
 - Edge case — empty subject (`git commit -m "feat:"`) is rejected by `subject-empty` rule from the conventional preset.
 - Test expectation: behavioral probes above, manually executed once during U6.
 
 **Verification:**
+
 - Both the rejection and the acceptance probes behave as expected.
 - `.husky/commit-msg` is committed alongside `commitlint.config.js`.
 
@@ -351,9 +381,11 @@ ESLint stack (flat config, evaluated in order):
 **Dependencies:** U3 (scripts must exist before CI can call them)
 
 **Files:**
+
 - Create: `.github/workflows/ci.yml`
 
 **Approach:**
+
 - Trigger on `push` to `main` and `pull_request` targeting `main`.
 - Single job `verify` running on `ubuntu-latest`.
 - Steps:
@@ -368,13 +400,16 @@ ESLint stack (flat config, evaluated in order):
 - No artifact upload, no deploy step (out of scope).
 
 **Patterns to follow:**
+
 - Standard GitHub Actions Node setup pattern; no repo-specific precedent to follow yet.
 
 **Test scenarios:**
+
 - Verification — push the branch and open a draft PR; CI run completes green for the unchanged `main` baseline. **Covers AE3 (CI half) and the workflow-end-to-end of AE4 (a11y violation introduced in a probe branch fails the lint step).**
 - Test expectation: none locally — CI behavior is verified on GitHub.
 
 **Verification:**
+
 - A green CI run on `main` after this commit lands.
 - Introducing a deliberate lint or format violation in a probe branch produces a red CI run.
 
@@ -393,14 +428,14 @@ ESLint stack (flat config, evaluated in order):
 
 ## Risks & Dependencies
 
-| Risk | Mitigation |
-|------|------------|
-| `eslint-plugin-import` flat-config support breaks against ESLint 10.x | Fall back to `eslint-plugin-import-x` (documented Open Question, no plan rewrite needed). |
-| Forgetting the function form for `tsc --noEmit` in lint-staged silently breaks tsconfig resolution | U5 explicitly uses the function form and includes a manual probe that introduces a type error to confirm the hook fails. |
-| `npx husky init` overwrites an existing `.husky/pre-commit` if rerun | Run `husky init` once in U4 and never again; subsequent edits are direct. |
-| Contributor on Yarn or pnpm (no `prepare` script semantics on Yarn classic) | Repo currently uses npm; not in scope. Note in README only if the situation arises. |
-| Husky-installed hooks only fire after `npm install` runs the `prepare` script | New contributors cloning the repo must run `npm install` before their first commit; this is already the natural first step. |
-| `.husky/commit-msg` `$1` quoting differs on Windows PowerShell | Repo is developed on macOS; if a Windows contributor joins, switch to the documented PowerShell-escaped form. |
+| Risk                                                                                               | Mitigation                                                                                                                  |
+| -------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `eslint-plugin-import` flat-config support breaks against ESLint 10.x                              | Fall back to `eslint-plugin-import-x` (documented Open Question, no plan rewrite needed).                                   |
+| Forgetting the function form for `tsc --noEmit` in lint-staged silently breaks tsconfig resolution | U5 explicitly uses the function form and includes a manual probe that introduces a type error to confirm the hook fails.    |
+| `npx husky init` overwrites an existing `.husky/pre-commit` if rerun                               | Run `husky init` once in U4 and never again; subsequent edits are direct.                                                   |
+| Contributor on Yarn or pnpm (no `prepare` script semantics on Yarn classic)                        | Repo currently uses npm; not in scope. Note in README only if the situation arises.                                         |
+| Husky-installed hooks only fire after `npm install` runs the `prepare` script                      | New contributors cloning the repo must run `npm install` before their first commit; this is already the natural first step. |
+| `.husky/commit-msg` `$1` quoting differs on Windows PowerShell                                     | Repo is developed on macOS; if a Windows contributor joins, switch to the documented PowerShell-escaped form.               |
 
 ---
 

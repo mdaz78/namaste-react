@@ -20,29 +20,35 @@ The repo is freshly scaffolded from Vite. ESLint is configured at a minimal leve
 ## Requirements
 
 **Formatting (Prettier)**
+
 - R1. Install Prettier and add a `.prettierrc.json` with: `singleQuote: true`, `semi: true`, `printWidth: 100`, `tabWidth: 2`, `trailingComma: 'all'`, `arrowParens: 'always'`.
 - R2. Add a `.prettierignore` covering `dist/`, `node_modules/`, `package-lock.json`, and any generated/cache directories.
 - R3. Re-format the existing source tree once so the baseline is clean.
 
 **ESLint (production-grade)**
+
 - R4. Keep the existing flat-config base (`@eslint/js`, `typescript-eslint`, `eslint-plugin-react-hooks`, `eslint-plugin-react-refresh`) and confirm it lints `src/` cleanly.
 - R5. Add `eslint-plugin-jsx-a11y` with its recommended config to surface accessibility issues at lint time.
 - R6. Add `eslint-plugin-import` with rules that enforce a deterministic import order (builtins → external → internal → relative) and forbid duplicate / circular imports.
 - R7. Add `eslint-config-prettier` (or its flat-config equivalent) so ESLint never disagrees with Prettier on stylistic concerns.
 
 **Commit hygiene (commitlint)**
+
 - R8. Install `@commitlint/cli` and `@commitlint/config-conventional`; commit messages must conform to Conventional Commits (`type(scope?): subject`).
 - R9. A commit-msg git hook runs commitlint and rejects non-conforming messages locally before they enter history.
 
 **Git hooks (Husky + lint-staged)**
+
 - R10. Husky is installed and initialized via a `prepare` npm script so hooks bootstrap on `npm install` for any contributor.
 - R11. A pre-commit hook runs lint-staged, which executes `prettier --write` and `eslint --fix` only on staged `*.{ts,tsx,js,jsx,json,md,css}` files.
 - R12. A separate pre-commit (or pre-push) step runs `tsc --noEmit` against the full project so type errors never reach `main`.
 
 **npm scripts**
+
 - R13. Add `format` (`prettier --write .`), `format:check` (`prettier --check .`), `lint` (already exists), `lint:fix` (`eslint . --fix`), `typecheck` (`tsc --noEmit`), and `prepare` (`husky`).
 
 **Continuous Integration (GitHub Actions)**
+
 - R14. A workflow at `.github/workflows/ci.yml` runs on pushes and pull requests targeting `main`.
 - R15. CI installs deps with a locked install, then runs in order: `typecheck`, `lint`, `format:check`, `build`. Any step failing fails the job.
 - R16. The workflow uses an LTS Node version (≥ 20) with dependency caching keyed on `package-lock.json`.
@@ -62,7 +68,7 @@ The repo is freshly scaffolded from Vite. ESLint is configured at a minimal leve
 
 - A fresh `git clone` + `npm install` produces a working state where pre-commit hooks, commit-msg hooks, format/lint/typecheck scripts, and CI all behave as specified — no manual setup steps required.
 - `npm run lint`, `npm run format:check`, `npm run typecheck`, and `npm run build` all exit 0 against the current `main` after the setup commit lands.
-- A non-conforming commit message or unformatted file cannot reach `main` without the contributor having explicitly bypassed `--no-verify` *and* the CI job, which is observable in the PR.
+- A non-conforming commit message or unformatted file cannot reach `main` without the contributor having explicitly bypassed `--no-verify` _and_ the CI job, which is observable in the PR.
 - The downstream `ce-plan` step can pick this doc up and produce an implementation plan without re-deciding tool choices, package versions to target, or hook layout.
 
 ---
