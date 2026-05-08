@@ -38,7 +38,11 @@ export default defineConfig([
     },
   },
   {
-    files: ['eslint.config.js', 'lint-staged.config.js', 'commitlint.config.js', 'vite.config.ts'],
+    // Config files import CJS plugin packages that legitimately attach named
+    // exports to their default export; suppressing these advisory warnings
+    // prevents false positives across all current and future *.config.{js,ts}
+    // files at the repo root.
+    files: ['*.config.{js,ts,mjs,cjs}'],
     rules: {
       'import-x/no-named-as-default': 'off',
       'import-x/no-named-as-default-member': 'off',
