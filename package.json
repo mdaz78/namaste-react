@@ -1,0 +1,20 @@
+{
+  "name": "namastereact",
+  "version": "1.0.0",
+  "description": "Project built during the Namaste React Course by Akshay Saini",
+  "homepage": "https://github.com/mdaz78/namaste-react#readme",
+  "bugs": {
+    "url": "https://github.com/mdaz78/namaste-react/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdaz78/namaste-react.git"
+  },
+  "license": "ISC",
+  "author": "Md Abu Zafar",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  }
+}
