@@ -27,6 +27,14 @@ The `--legacy-peer-deps` flag is required because `eslint-plugin-jsx-a11y@^6` st
 | `npm run format:check` | Check Prettier formatting without writing            |
 | `npm run typecheck`    | Project-references type check (`tsc -b --noEmit`)    |
 
+### Styling
+
+Styling uses [Tailwind CSS v4](https://tailwindcss.com) via the official `@tailwindcss/vite` plugin. There is no PostCSS config and no `tailwind.config.js`; the v4 Vite plugin auto-scans the project for class names.
+
+- Entry stylesheet: `src/index.css` containing a single `@import 'tailwindcss';`
+- The stylesheet is imported once from `src/main.tsx`, so it ships with every page
+- To add styles, write utility classes directly in `className` (e.g. `<h1 className="text-4xl font-bold text-blue-600">`)
+
 ### Git hooks
 
 A pre-commit hook runs `lint-staged` on staged files:
